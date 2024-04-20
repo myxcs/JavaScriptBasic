@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai1</title>
+    <style>
+        .thanh-mo-rong {
+            background-color: #f1f1f1;
+            color: #333;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: 0.4s;
+        }
+
+        .active, .thanh-mo-rong:hover {
+            background-color: #ddd;
+        }
+
+        .noi-dung {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <button class="thanh-mo-rong">Mục 1</button>
+    <div class="noi-dung">
+        <p>Nội dung cho Mục 1 ở đây.</p>
+    </div>
+
+    <button class="thanh-mo-rong">Mục 2</button>
+    <div class="noi-dung">
+        <p>Nội dung cho Mục 2 ở đây.</p>
+    </div>
+
+    <button class="thanh-mo-rong">Mục 3</button>
+    <div class="noi-dung">
+        <p>Nội dung cho Mục 3 ở đây.</p>
+    </div>
+
+    <script>
+
+        var thanhMoRong = document.querySelectorAll('.thanh-mo-rong');
+        for (var i = 0; i < thanhMoRong.length; i++) {
+            thanhMoRong[i].addEventListener('click', function() {
+                this.classList.toggle('active');
+                var noiDung = this.nextElementSibling;
+                if (noiDung.style.display === 'block') {
+                    noiDung.style.display = 'none';
+                } else {
+                    noiDung.style.display = 'block';
+                }
+            });
+        }
+    </script>
+</body>
+<script>
+        
+    var thanhMoRong = document.querySelectorAll('.thanh-mo-rong');
+    for (var i = 0; i < thanhMoRong.length; i++) {
+        thanhMoRong[i].addEventListener('click', function() {
+            this.classList.toggle('active');
+            var noiDung = this.nextElementSibling;
+            if (noiDung.style.display === 'block') {}
+                noiDung.style.display = 'none';
+            } else {
+                noiDung.style.display = 'block';
+            }
+        });
+    }
+</script>
+</body>
+</html>
+</html>

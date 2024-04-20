@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+</head>
+<style>
+
+   #container{
+    width: 600px;
+    background-color: antiquewhite;
+    margin: 10px;
+    text-align: center;
+   }
+   #img{
+    width: 300px;
+    height: 600px;
+    object-fit: contain;
+    object-position: center;
+   }
+   
+</style>
+<body>
+    <div id="container">
+        <div class="img">
+            <img id="img" src="" alt="">
+        </div>
+        <div>
+            <button id="prev">Prev</button>
+            <button id="next">Next</button>
+        </div>
+    </div>
+
+    <script>
+        var imgArr = ['src/1.jpg', 'src/2.jpg','src/3.jpg','src/4.jpg','src/5.jpg'];
+        var img = document.getElementById('img');
+        img.setAttribute("src", imgArr[0]);
+
+        var index = 0;
+        var length = imgArr.length;
+
+         auto_slider = function(){
+            img.setAttribute("src", imgArr[index]);
+            index++;
+            if(index >= length)
+            {
+                index = 0;
+            }
+        }
+        setInterval(auto_slider, 3000);
+
+        prev.onclick = function(){
+            index--;
+            if(index < 0)
+            {
+                index = length - 1;
+            }
+            img.setAttribute("src", imgArr[index]);
+        }
+
+        next.onclick = function(){
+            index++;
+            if(index >= length)
+            {
+                index = 0;
+            }
+            img.setAttribute("src", imgArr[index]);
+        }
+
+
+    </script>
+</body>
+</html>

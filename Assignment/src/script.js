@@ -70,7 +70,7 @@ function kiemTra() {
     hinhthuc_error.innerHTML = "";
     soluong_error.innerHTML = "";
 
-   
+ 
 
     if(!name || !email || !phone || !soluong || khoahoc == 0)
     {
@@ -157,7 +157,7 @@ function kiemTra() {
     }
 
     alert ("Đăng ký thành công");
-    return true;
+    return false;
 
 
 }

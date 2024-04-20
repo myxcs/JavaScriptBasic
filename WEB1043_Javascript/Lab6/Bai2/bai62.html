@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai2</title>
+    <style>
+        .banchoi {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 5px;
+            margin-top: 20px;
+        }
+
+        .o, .x {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 36px;
+            cursor: pointer;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="banchoi">
+        <div class="o" onclick="danhDau(this)"></div>
+        <div class="o" onclick="danhDau(this)"></div>
+        <div class="o" onclick="danhDau(this)"></div>
+        <div class="o" onclick="danhDau(this)"></div>
+        <div class="o" onclick="danhDau(this)"></div>
+        <div class="o" onclick="danhDau(this)"></div>
+        <div class="o" onclick="danhDau(this)"></div>
+        <div class="o" onclick="danhDau(this)"></div>
+        <div class="o" onclick="danhDau(this)"></div>
+    </div>
+
+    <script>
+        var luotChoiX = true; // true: X, false: O
+
+        function danhDau(ocell) {
+            if (!ocell.innerText) {
+                ocell.innerText = luotChoiX ? 'X' : 'O';
+                luotChoiX = !luotChoiX;
+            }
+        }
+    </script>
+</body>
+</html>

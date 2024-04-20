@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buoi8</title>
+    <script src="code8.js"></script>
+
+</head>
+<body>
+    <form id="my-frm">
+        <input type="text" name="firstname" placeholder="First name"/>
+    </form>
+    <script>
+        function sendInfor() {
+            var inputs = document.getElementById("my-frm").elements;
+            var inputByIndex = inputs[0];
+        }
+    
+    </script>
+    <button type="button" onclick="triggerSomething()">click me</button>
+    <script>
+        function triggerSomething() {
+            console.dir(event.target);
+        }
+    </script>
+</body>
+</html>

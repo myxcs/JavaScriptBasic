@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bai1</title>
+</head>
+
+<body>
+    <div class="group_input">
+        <label id="pro" data-price="1950" for="iPhone">iPhone 9</label>
+        <input type="text" id="qty" />
+        <button>OK</button>
+    </div>
+    <hr />
+    <h3>Name: <span id="name">?</span></h3>
+    <h3>Amount: <span id="amount">?</span></h3>
+</body>
+<script>
+    let label = document.getElementById('pro');
+    let inputAmount = document.getElementById('qty');
+    let button = document.getElementsByTagName('button');
+    let name = document.getElementById('name');
+    let amount = document.getElementById('amount');
+    function display() {
+        name.innerHTML = label.innerText;
+        amount.innerHTML = label.getAttribute('data-price') * inputAmount.value;
+    }
+    button[0].onclick = function () {
+        display();
+        console.log(inputAmount);
+    };
+
+</script>
+
+</html>

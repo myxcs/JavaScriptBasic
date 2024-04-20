@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ValidateForm</title>
+    <style>
+        .error {
+            color: red;
+        }
+       #container{
+           margin: 0 auto;
+           padding: 20px;
+           border: 5px;
+           margin: 50px;
+           background-color: rgb(73, 238, 147);
+       }
+       span{
+        color: red;
+       }
+     
+    </style>
+</head>
+<body>
+    <div id="container">
+    <form id="form" action="" onsubmit="return kiemTra()"></form>
+    <h2>Đăng ký khóa học</h2>
+   <table>
+    <tr>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Họ và Tên: </td>
+        <td><input type="text" id="name"><span id="name_error"></span></td>
+    </tr>
+    <tr>
+        <td>Email: </td>
+        <td><input type="text" id="email"><span id="email_error"></span></td>
+    </tr>
+    <tr>
+        <td>Số điện thoại: </td>
+        <td><input type="text" id="phone"><span id="phone_error"></span></td>
+    </tr>
+    <tr>
+        <td>Password: </td>
+        <td><input type="password" id="password"><span id="password_error"></span></td>
+    </tr>
+    <tr>
+        <td>Khóa học: </td>
+        <td>
+            <select name="khoahoc" id="khoahoc">
+                <option value="0"> Lựa chọn khóa học</option>
+                <option value="1"> JavaScript cơ bản</option>
+                <option value="2"> Android cơ bản</option> 
+                <option value="3"> Game cơ bản</option>
+            </select>
+            <span id="khoahoc_error"></span>
+        </td>
+    </tr>
+   
+    <tr>
+        <td>Học phí: </td>
+        <td>
+            <input type="text" id="hocphi" onchange="tinhtien()">
+        </td>
+    </tr>
+    <tr>
+        <td>Số người tham gia: </td>
+        <td>
+            <input type="number" name="" id="soluong" min="1" onchange="tinhtien()">
+            <span id="soluong_error"></span>
+        </td>
+        
+    </tr>
+    <tr>
+        <td>Tổng tiền: </td>
+        <td>
+            <input type="text" name="" id="thanhtien" value="0" readonly>
+        </td>
+    </tr>
+    <tr>
+        <td>Hình thức học: </td>
+        <td>
+            <input type="radio" name="hinhthuc" id="hinhthuc" value="0">
+            <label for="hinhthuc">Offline</label>
+            <input type="radio" name="hinhthuc" id="hinhthuc" value="1">
+            <label for="hinhthuc">Online</label>
+            <td><span id="hinhthuc_error"></span></td>
+        </td>
+    </tr>
+    <tr>
+        <td>Chi phí: </td>
+        <td>
+            <input type="text" name="" id="chiphi" value="0" readonly>
+        </td>
+    </tr>
+   </table> <br>
+   <button type="submit" onclick="kiemTra()"> Đăng ký</button>
+    </div>
+   
+
+
+
+    <script>
+
+    var khoahoc = document.getElementById("khoahoc");
+    var hocphi = document.getElementById("hocphi");
+    hocphi.value = 0;  
+    khoahoc.addEventListener("change", function(){
+        if(khoahoc.value == 0){
+            hocphi.value = 0;
+        }else if(khoahoc.value == 1){
+            hocphi.value = 1000000;
+        }else if(khoahoc.value == 2){
+            hocphi.value = 2000000;
+        }else if(khoahoc.value == 3){
+            hocphi.value = 3000000;
+        }
+    });
+
+
+ 
+    var chiphi = document.getElementById("chiphi");
+   chiphi.value = 0;
+   var hinhthuc = document.getElementsByName("hinhthuc");
+   hinhthuc.forEach((item) => {
+    item.addEventListener("change", function(){
+        if(this.checked)
+        {
+            if(this.value == 0)
+            {
+                chiphi.value = hocphi.value;
+            }
+            if(this.value == 1)
+            {
+                chiphi.value = hocphi.value * 0.8;
+            }
+        }
+    });
+   });
+
+   function tinhtien(){
+    var thanhtien = document.getElementById("thanhtien").value;
+    var soluong = document.getElementById("soluong").value;
+    var dongia = document.getElementById("hocphi").value;
+
+    thanhtien = Number(dongia) * Number(soluong);
+    document.getElementById("thanhtien").value = thanhtien;
+   }
+
+   function kiemTra()
+   {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var phone = document.getElementById("phone").value;
+    var password = document.getElementById("password").value;
+
+    var khoahoc = document.getElementById("khoahoc").value;
+    var soluong = document.getElementById("soluong").value;
+    var hinhthuc = document.getElementById("hinhthuc").value;
+
+    var name_error = document.getElementById("name_error");
+    var email_error = document.getElementById("email_error");
+    var phone_error = document.getElementById("phone_error");
+    var password_error = document.getElementById("password_error");
+    var khoahoc_error = document.getElementById("khoahoc_error");
+    var hinhthuc_error = document.getElementById("hinhthuc_error");
+    var soluong_error = document.getElementById("soluong_error");
+
+    name_error.innerHTML = "";
+    email_error.innerHTML = "";
+    phone_error.innerHTML = "";
+    password_error.innerHTML = "";
+    khoahoc_error.innerHTML = "";
+    hinhthuc_error.innerHTML = "";
+    soluong_error.innerHTML = "";
+
+    if(!name || !email || !phone || !password || khoahoc == 0 || !soluong)
+    {
+        if(!name)
+        {
+            name_error.innerHTML = "Tên không được để trống";
+        }
+        if(!email)
+        {
+            email_error.innerHTML = "Email không được để trống";
+        }
+        if(!phone)
+        {
+            phone_error.innerHTML = "Số điện thoại không được để trống";
+        }
+        if(!password)
+        {
+            password_error.innerHTML = "Mật khẩu không được để trống";
+        }
+        if(khoahoc == 0)
+        {
+            khoahoc_error.innerHTML = "Khóa học không được để trống";
+        }
+        if(!soluong)
+        {
+            soluong_error.innerHTML = "Số lượng không được để trống";
+        }
+        if(!selected)
+        {
+            hinhthuc_error.innerHTML = "Hình thức không được để trống";
+        }
+
+      return false
+   }
+
+
+   if(name.length < 3)
+    {
+        name_error.innerHTML = "Vui lòng nhập tên trên 3 kí tự";
+        return false;
+    }
+    if(name.length > 18)
+    {
+        name_error.innerHTML = "Vui lòng nhập tên nhỏ hơn 18 kí tự";
+        return false;
+    }
+    if(email.length > 0)
+    {
+        let regexEmail = new RegExp("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$");
+        if(!regexEmail.test(email))
+        {
+            email_error.innerHTML = "Vui lòng nhập email đúng định dạng";
+            return false;
+        }
+    }
+    if(phone.length > 0)
+    {
+        let regexPhone = new RegExp("^0\\d{9}$");
+        if(!regexPhone.test(phone))
+        {
+            phone_error.innerHTML = "Vui lòng nhập số điện thoại đúng định dạng";
+            return false;
+        }
+    }
+
+    var regexPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$");
+    if(!regexPassword.test(password))
+    {
+        password_error.innerHTML = "Vui lòng nhập mật khẩu đúng định dạng";
+        return false;
+    }
+
+    var selected = false;
+    var hinhthuc = document.getElementsByName("hinhthuc");
+    for(var i = 0; i < hinhthuc.length; i++)
+    {
+        if(hinhthuc[i].checked)
+        {
+            selected = true;
+            break;
+        }
+    }
+    if(!selected)
+    {
+        hinhthuc_error.innerHTML = "Vui lòng chọn hình thức";
+        return false;
+    }
+  
+    alert ("Đăng ký thành công");
+    return false;
+
+}
+</script>
+</body>
+</html>

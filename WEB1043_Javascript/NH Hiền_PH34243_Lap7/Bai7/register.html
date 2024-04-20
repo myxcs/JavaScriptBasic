@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="css/register.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--Tạo 1 form gồm input: Tên và họ, gioi tinh-->
+    <form id="register-form">
+        Ten: <input type="text" id="ten" name="ten" placeholder="Ten"
+                onkeypress="updateTen();">
+        <span id="canhBaoChoTen" class="warning-message"></span>
+        <br />
+        Ho: <input type="text" id="ho" name="ho" placeholder="Ho">
+        <span id="canhBaoChoHo" class="warning-message"></span>
+        <br />
+        Gioi Tinh:<input type="radio" name="gioiTinh" value="nam">Nam
+        <input type="radio" name="gioiTinh" value="nu">Nu
+        <span id="canhBaoChoGioiTinh" class="warning-message"></span>
+        <br />
+    </form>
+    <button id="submit" onclick="register();">Submit</button>
+    <script type="text/javascript" src="js/register.js"></script>
+</body>
+
+</html>

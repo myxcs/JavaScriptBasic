@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký khóa học</title>
+    
+    <link rel="stylesheet" type="text/css" href="src/style.css">
+</head>
+<body>
+    <div id="container">
+        <form id="form" action="" onsubmit="return kiemTra()" >
+         <h1>Đăng ký thành viên</h1>
+         <table>
+            <tr>
+                <td>Họ và tên:</td>
+                <td><input type="text" name="name" id="name"></td>
+                <td><span class="error" id="name_error"></span></td>
+            </tr>
+
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" name="email" id="email"></td>
+                <td><span class="error" id="email_error"></span></td>
+            </tr>
+
+            <tr>
+                <td>Số điện thoại:</td>
+                <td><input type="text" name="phone" id="phone"></td>
+                <td><span class="error" id="phone_error"></span></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" id="password"></td>
+                <td><span class="error" id="password_error"></span></td>
+            </tr>
+            <tr>
+                <td>Tuổi:</td>
+                <td><input type="number" name="age" id="age"></td>
+                <td><span class="error" id="age_error"></span></td>
+            </tr>
+         </table>
+        <div>
+            <button type="button" onclick="kiemTra()"> Đăng ký</button>
+        </div>
+        </form>
+    </div>
+   <script src="src/script.js"></script>
+</body>
+
+</html>
